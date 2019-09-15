@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Введенное число</th>
+            <th>B</th>
+            <th>K</th>
+        </tr>
+    {{ with .Sets}}
+        {{ range . }}
+        <tr>
+            <td> {{ .Guess }} </td>
+            <td> {{ .B }} </td>
+            <td> {{ .K }} </td>
+        </tr>
+        {{ end }}
+    {{ end }}
+    </table>
+
+    {{ if .Win }}
+      <div>  Вы выйграли!!!</div>
+        <form method="POST">
+            <input type="submit" name="play_again" value="Играть заново!">
+        </form>
+    {{ else }}
+        <form method="POST">
+            Введите число
+            <input type="text" name="guess">
+            <input type="submit" name="submit">
+            <input type="submit" name="restart" value="Начать с начала">
+        </form>
+    {{ end }}
+
+</body>
+</html>
