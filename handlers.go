@@ -4,12 +4,22 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 
 	uuid "github.com/IIayk122/AuTest/go.uuid"
 )
 
 func index(res http.ResponseWriter, req *http.Request) {
 	tpl.ExecuteTemplate(res, "index.gohtml", nil)
+}
+
+func stringToInt(A string) []int {
+	a := strings.Split(A, "")
+	b := make([]int, len(A))
+	for i, v := range a {
+		b[i], _ = strconv.Atoi(v)
+	}
+	return b
 }
 
 func play(res http.ResponseWriter, req *http.Request) {
@@ -35,7 +45,7 @@ func play(res http.ResponseWriter, req *http.Request) {
 			newgame = game{generateSecret(), []set{}, false}
 		} else {
 			temp := data[c.Value]
-			guess, _ := strconv.Atoi(req.FormValue("guess"))
+			guess := stringToInt(req.FormValue("guess"))
 			newSet := checkGuess(guess, temp.secretNumber)
 			if newSet.B == 4 {
 				newgame = game{temp.secretNumber, append(temp.Sets, newSet), true}

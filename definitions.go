@@ -2,14 +2,13 @@ package main
 
 import "text/template"
 
-type numbers [4]int
-
 type set struct {
-	Guess, B, K int
+	Guess []int
+	B, K  int
 }
 
 type game struct {
-	secretNumber numbers
+	secretNumber []int
 	Sets         []set
 	Win          bool
 }
