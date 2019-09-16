@@ -13,7 +13,7 @@ COPY --from=builder /go/bin/templates /go/bin/templates
 
 CMD [ "./AuTest" ]
 
-########################################
+#######################################
 #docker build -t autest .
 #docker run -ti -p 8080:8080 autest
 #docker load -i autest.tar 
