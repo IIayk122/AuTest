@@ -16,9 +16,7 @@ func Test_checkGuess(t *testing.T) {
 		want set
 	}{
 
-		{"ololo",
-			args{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9}, []int{9, 0, 0, 0}},
-			set{[]int{9, 0, 0, 0}, 4, 0}},
+		{"ololo", args{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9}, []int{9, 0, 0, 0}},set{[]int{9, 0, 0, 0}, 4, 0}},
 		{"ololo", args{[]int{0, 0, 0, 0}, []int{0, 0, 0, 0}}, set{[]int{0, 0, 0, 0}, 4, 0}},
 		{"ololo", args{[]int{0, 0, 0, 0}, []int{0, 0, 0, 0}}, set{[]int{0, 0, 0, 0}, 4, 0}},
 	}
@@ -34,7 +32,6 @@ func Test_generateSecret(t *testing.T) {
 		name          string
 		wantGenerated []int
 	}{
-		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		if gotGenerated := generateSecret(); !reflect.DeepEqual(gotGenerated, tt.wantGenerated) {
